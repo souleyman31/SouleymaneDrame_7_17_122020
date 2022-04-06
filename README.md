@@ -1,14 +1,16 @@
 # Création d'un réseau social d'entreprise
 
+---
+
 ## PROJET 7
 
 ---
 
 Créer un réseau social d'entreprise. La stack utilisée pour ce projet:
 
--   ReactJs
--   NodeJs + Express + Sequelize
--   Mysql
+-   **ReactJs**
+-   **NodeJs** + **Express** + **Sequelize**
+-   **Mysql**
 
 ---
 
@@ -23,6 +25,8 @@ Créer un réseau social d'entreprise. La stack utilisée pour ce projet:
 
 -   npm install,
 -   npm start
+
+---
 
 ### Pour tester les fonctionnalités de l'application :
 
