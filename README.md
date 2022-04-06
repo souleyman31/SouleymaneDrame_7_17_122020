@@ -3,12 +3,12 @@ PROJET 7 GROUPOMANIA
 #Backend et Frontend du réseau social de l'entreprise Groupomania
 
 #Backend:
-npm install
+npm install,
 npm run dev
 
 #Frontend
-npm install
-cd client
+npm install,
+cd client,
 npm start
 
 
