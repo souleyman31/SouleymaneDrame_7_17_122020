@@ -1,0 +1,61 @@
+//
+
+const mysql2 = require("mysql2");
+const express = require("express");
+const colors = require("colors");
+const morgan = require("morgan");
+
+const path = require("path");
+const logger = require("./middleware/logger");
+
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
+const dotenv = require("dotenv");
+const { checkUser, requireAuth } = require("./middleware/auth");
+dotenv.config({ path: "./config/config.env" });
+
+const app = express();
+
+// //ERREUR CORS
+const corsOptions = {
+	origin: process.env.CLIENT_URL,
+	credentials: true,
+	allowedHeaders: ["sessionId", "Content-Type"],
+	exposedHeaders: ["sessionId"],
+	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+	preflightContinue: false
+};
+app.use(cors(corsOptions));
+const db = require("./models");
+
+//MORGAN
+if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+
+//LOGGER
+app.use(logger);
+
+//BODYPARSER AND COOKIE-PARSER
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+// CHECK BEFORE THE ROUTES
+app.get("*", checkUser);
+app.get("/jwtid", requireAuth, (req, res) => {
+	res.status(200).send(`${res.locals.user.id}`);
+	console.log(`${res.locals.user.id}`);
+});
+
+//STATIC FOLDER
+app.use("/client/public/uploads", express.static(path.join(__dirname, "client/public/uploads")));
+
+//ROUTES
+app.use("/api/users", require("./routes/user"));
+app.use("/api/posts", require("./routes/post"));
+app.use("/api/comments", require("./routes/comment"));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
+	console.log(`App listening on mode ${process.env.NODE_ENV} in the port ${PORT}`.white.inverse)
+);
