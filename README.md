@@ -37,9 +37,9 @@ Et le lien de la mission :
 
 ---
 
-Dans CONFIG, on a 2 fichiers: config.env et config.json
+on a deux fichiers: config.env et config.json pour ré-installer le CONFIG
 
-1.  Dans config.env:
+1.  Dans _config.env_:
 
 -   mettre PORT=5000,
     MAX_FILE_UPLOAD=1000000,
@@ -47,12 +47,14 @@ Dans CONFIG, on a 2 fichiers: config.env et config.json
 -   CLIENT_URL=http://localhost:3000,
 -   et mettre un code à ACCESS_TOKEN_SECRET
 
-2.  Dans config.json, on change le username, le password et le nom de database, que l'on a crée avec **SEQUELIZE CLI**
+2.  Dans _config.json_, on change le username, le password et le nom de database, que l'on a crée avec  
+    **SEQUELIZE CLI**
 
 #### Frontend
 
 ---
 
--   On crée .env et on y met REACT_APP_API_URL=http://localhost:5000
+-   npx create-react-app client => cd client
+-   npm i node-sass react-router-dom dotenv
 
-![Groupomania](http://localhost:5000/client/public/uploads/1649316083330.png)
+-   On crée .env et on y met REACT_APP_API_URL=http://localhost:5000
