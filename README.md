@@ -2,11 +2,14 @@
 
 ## PROJET 7
 
-Créer un réseau social d'entreprise. La stack utilisée pour ce projet:
+Créer un réseau social d'entreprise. La _stack_ utilisée pour ce projet:
 
 -   **React.Js**
 -   **Node.Js** + **Express.Js** + **Sequelize**
 -   **MySQL**
+
+Et le lien de la mission :  
+[Openclassroom](https://openclassrooms.com/fr/paths/556/projects/677/assignment)
 
 ---
 
@@ -14,10 +17,14 @@ Créer un réseau social d'entreprise. La stack utilisée pour ce projet:
 
 #### Backend
 
+---
+
 -   npm install,
 -   npm run dev
 
 #### Frontend
+
+---
 
 -   npm install,
 -   npm start
@@ -28,11 +35,24 @@ Créer un réseau social d'entreprise. La stack utilisée pour ce projet:
 
 #### Backend
 
-Dans CONFIG, on a 3 fichiers config.env, config.json
+---
 
--   Une fois dans config.env, mettre PORT=5000, MAX_FILE_UPLOAD=1000000, FILE_UPLOAD_PATH = ./public/uploads, CLIENT_URL=http://localhost:3000, et mettre un code d'une vingtaine de chiffre à ACCESS_TOKEN_SECRET
--   Une fois dans config.json, on change le username, le password et le nom de database, que l'on a crée avec **SEQUELIZE CLI**
+Dans CONFIG, on a 2 fichiers: config.env et config.json
+
+1.  Dans config.env:
+
+-   mettre PORT=5000,
+    MAX_FILE_UPLOAD=1000000,
+-   FILE_UPLOAD_PATH = ./public/uploads,
+-   CLIENT_URL=http://localhost:3000,
+-   et mettre un code à ACCESS_TOKEN_SECRET
+
+2.  Dans config.json, on change le username, le password et le nom de database, que l'on a crée avec **SEQUELIZE CLI**
 
 #### Frontend
 
-On crée .env et on y met REACT_APP_API_URL=http://localhost:5000
+---
+
+-   On crée .env et on y met REACT_APP_API_URL=http://localhost:5000
+
+![Groupomania](http://localhost:5000/client/public/uploads/1649316083330.png)
