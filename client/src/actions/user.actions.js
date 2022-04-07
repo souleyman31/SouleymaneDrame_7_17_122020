@@ -9,6 +9,7 @@ export const UPDATE_BIO = "UPDATE_BIO";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
+export const DELETE_USER = "DELETE_USER";
 
 // GET USER
 export const getUser = uid => {
@@ -82,6 +83,20 @@ export const unfollowUser = (followerId, idToUnFollow) => {
 		})
 			.then(res => {
 				dispatch({ type: UNFOLLOW_USER, payload: { idToUnFollow } });
+			})
+			.catch(err => console.log(err));
+	};
+};
+
+//DELETE USER
+export const deleteUser = userId => {
+	return dispatch => {
+		return axios({
+			method: "DELETE",
+			url: `${process.env.REACT_APP_API_URL}/api/users/${userId}`
+		})
+			.then(res => {
+				dispatch({ type: DELETE_USER, payload: { userId } });
 			})
 			.catch(err => console.log(err));
 	};

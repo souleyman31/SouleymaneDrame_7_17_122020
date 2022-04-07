@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
+
 import { dateParser } from "../Utils";
+import DeleteProfil from "./DeleteProfil";
 import FollowHandler from "./FollowHandler";
 import UploadProfil from "./UploadProfil";
 
@@ -69,6 +71,9 @@ const UpdateProfil = () => {
 						<h5 onClick={() => setFollowersPopup(true)}>
 							Abonnés : {userData.followers ? userData.followers.length : "0"}
 						</h5>
+						<button>
+							Suppression du compte <DeleteProfil />
+						</button>
 					</div>
 				</div>
 				{/* 1//FOLLOWING POPUP SE MET APRES LE DIV UPD-CONTAINER */}
