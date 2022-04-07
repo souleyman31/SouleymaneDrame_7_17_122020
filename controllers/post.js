@@ -6,7 +6,6 @@ const asyncFun = require("async");
 const ITEMS_LIMIT = 50;
 
 //CREATE A POST
-//On rajoutera PICTURE PLUS TARD
 exports.createPost = (req, res, next) => {
 	try {
 		const message = req.body.message;
@@ -31,13 +30,13 @@ exports.createPost = (req, res, next) => {
 						models.Post.create({
 							message: message,
 							UserId: userFound.id,
-							picture: `${req.protocol}://${req.get("host")}/client/public/uploads/${
-								req.file.filename
-							}`
-								? `${req.protocol}://${req.get("host")}/client/public/uploads/${
-										req.file.filename
-								  }`
-								: userFound.picture,
+							// picture: `${req.protocol}://${req.get("host")}/client/public/uploads/${
+							// 	req.file.filename
+							// }`
+							// 	? `${req.protocol}://${req.get("host")}/client/public/uploads/${
+							// 			req.file.filename
+							// 	  }`
+							// 	: userFound.picture,
 							video: req.body.video,
 							likes: 0
 						}).then(function (newMessage) {
@@ -80,7 +79,16 @@ exports.readPost = async (req, res, next) => {
 			attributes: fields !== "*" && fields != null ? fields.split(",") : null,
 			limit: !isNaN(limit) ? limit : null,
 			offset: !isNaN(offset) ? offset : null,
-			attributes: ["id", "UserId", "picture", "video", "likes", "createdAt", "updatedAt"],
+			attributes: [
+				"id",
+				"UserId",
+				"message",
+				"picture",
+				"video",
+				"likes",
+				"createdAt",
+				"updatedAt"
+			],
 			include: [
 				{
 					model: models.User,
