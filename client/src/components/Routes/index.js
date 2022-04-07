@@ -11,7 +11,6 @@ function index() {
 			<Router>
 				<Navbar />
 				<Routes>
-					{/* // => https://forum.freecodecamp.org/t/how-to-use-exact-in-react-js/478632 */}
 					<Route path="/" element={<Home />} />
 					<Route path="/profil" element={<Profil />} />
 					<Route path="/trending" element={<Trending />} />
