@@ -39,7 +39,7 @@ Et le lien de la mission :
 
 on a deux fichiers: config.env et config.json pour ré-installer le CONFIG
 
-1.  Dans _config.env_:
+1.  Dans config.env:
 
 -   mettre PORT=5000,
     MAX_FILE_UPLOAD=1000000,
@@ -47,14 +47,12 @@ on a deux fichiers: config.env et config.json pour ré-installer le CONFIG
 -   CLIENT_URL=http://localhost:3000,
 -   et mettre un code à ACCESS_TOKEN_SECRET
 
-2.  Dans _config.json_, on change le username, le password et le nom de database, que l'on a crée avec  
-    **SEQUELIZE CLI**
+2.  Dans config.json, mettez vos identifiant et mot de passe de votre base de données MYSQL, sans oublier de créer les 3 databases de development, de test et de production à savoir :
+- database_development_projet7
+- database_test_projet7
+- database_production_projet7
 
 #### Frontend
 
 ---
-
--   npx create-react-app client => cd client
--   npm i node-sass react-router-dom dotenv
-
--   On crée .env et on y met REACT_APP_API_URL=http://localhost:5000
+Rien à signaler
