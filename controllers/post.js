@@ -30,13 +30,13 @@ exports.createPost = (req, res, next) => {
 						models.Post.create({
 							message: message,
 							UserId: userFound.id,
-							// picture: `${req.protocol}://${req.get("host")}/client/public/uploads/${
-							// 	req.file.filename
-							// }`
-							// 	? `${req.protocol}://${req.get("host")}/client/public/uploads/${
-							// 			req.file.filename
-							// 	  }`
-							// 	: userFound.picture,
+							picture: `${req.protocol}://${req.get("host")}/client/public/uploads/${
+								req.file.filename
+							}`
+								? `${req.protocol}://${req.get("host")}/client/public/uploads/${
+										req.file.filename
+								  }`
+								: userFound.picture,
 							video: req.body.video,
 							likes: 0
 						}).then(function (newMessage) {
