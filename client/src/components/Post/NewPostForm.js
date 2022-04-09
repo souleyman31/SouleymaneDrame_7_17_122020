@@ -93,13 +93,17 @@ const NewPostForm = () => {
 						</NavLink>
 						{/* PARTIE DE FORM*/}
 						<div className="post-form">
-							<textarea
-								name="message"
-								id="message"
-								placeholder="Quelque chose à publier ?"
-								onChange={e => setMessage(e.target.value)}
-								value={message}
-							/>
+							<label htmlFor="">
+								{" "}
+								Journal
+								<textarea
+									name="message"
+									id="message"
+									placeholder="Quelque chose à publier ?"
+									onChange={e => setMessage(e.target.value)}
+									value={message}
+								/>
+							</label>
 							{/* LES 3 RENDUS CONDITIONNELS */}
 							{message || postPicture || video.length > 20 ? (
 								<div className="card-container">
@@ -142,14 +146,17 @@ const NewPostForm = () => {
 									{/* SI ON VEUT TELECHARGER UNE VIDEO */}
 									{isEmpty(video) && (
 										<>
-											<img src="./img/icons/picture.svg" alt="img" />
-											<input
-												type="file"
-												id="file-upload"
-												name="file"
-												accept=".jpg, .jpeg, .png"
-												onChange={e => handlePicture(e)}
-											/>
+											<label htmlFor="">
+												{" "}
+												<img src="./img/icons/picture.svg" alt="img" />
+												<input
+													type="file"
+													id="file-upload"
+													name="file"
+													accept=".jpg, .jpeg, .png"
+													onChange={e => handlePicture(e)}
+												/>
+											</label>
 										</>
 									)}
 									{/* SI ON VEUT SUPPRIMER UNE VIDEO */}

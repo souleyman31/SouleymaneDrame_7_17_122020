@@ -42,7 +42,10 @@ const UpdateProfil = () => {
 							{updateForm === false && (
 								<>
 									<p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
-									<button onClick={() => setUpdateForm(!updateForm)}>
+									<button
+										color="black"
+										onClick={() => setUpdateForm(!updateForm)}
+									>
 										Modifier la bio
 									</button>
 								</>
