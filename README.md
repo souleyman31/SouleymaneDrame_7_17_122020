@@ -55,4 +55,4 @@ on a deux fichiers: config.env et config.json pour ré-installer le CONFIG
 #### Frontend
 
 ---
-Rien à signaler
+cd client => pour acceder au Frontend
