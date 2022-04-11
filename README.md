@@ -15,9 +15,9 @@ Et le lien de la mission :
 
 ### Backend et Frontend du réseau social de l'entreprise Groupomania
 
-**Information trés importante**
+#### **Information trés importante :**
 
--   Tout le **Frontend** se trouve dans le dossier Client.
+Tout le **Frontend** se trouve dans le dossier Client.
 
 #### Backend
 
