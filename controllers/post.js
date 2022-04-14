@@ -5,8 +5,56 @@ const asyncFun = require("async");
 //Const
 const ITEMS_LIMIT = 50;
 
-//CREATE A POST
+//CREATE A MESSAGE POST
 exports.createPost = (req, res, next) => {
+	try {
+		const message = req.body.message;
+		const userId = req.body.userId;
+		if (!message || !userId) return res.status(400).json({ error: "Votre message est vide" });
+
+		asyncFun.waterfall(
+			[
+				function (done) {
+					models.User.findOne({ where: { id: userId } })
+						.then(function (userFound) {
+							done(null, userFound);
+						})
+						.catch(function (err) {
+							return res
+								.status(500)
+								.json({ error: "Impossible de vérifier l'utilisateur" });
+						});
+				},
+				function (userFound, done) {
+					if (userFound) {
+						models.Post.create({
+							message: message,
+							UserId: userFound.id,
+							picture: req.body.picture,
+							video: req.body.video,
+							likes: 0
+						}).then(function (newMessage) {
+							done(newMessage);
+						});
+					} else {
+						res.status(404).json({ error: "L'utilisateur est introuvable" });
+					}
+				}
+			],
+			function (newMessage) {
+				if (newMessage) {
+					return res.status(201).json(newMessage);
+				} else {
+					return res.status(500).json({ error: "Impossible de poster le message" });
+				}
+			}
+		);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+};
+//CREATE AN IMAGE POST
+exports.createPost1 = (req, res, next) => {
 	try {
 		const message = req.body.message;
 		const userId = req.body.userId;

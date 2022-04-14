@@ -8,7 +8,8 @@ const commentCtrl = require("../controllers/comment");
 const { uploadImage } = require("../controllers/upload");
 
 // POSTS
-router.post("/", uploadImage, postCtrl.createPost); //=>Upload
+router.post("/", uploadImage, postCtrl.createPost);
+router.post("/upload", uploadImage, postCtrl.createPost1);
 router.get("/", postCtrl.readPost);
 router.put("/:id", postCtrl.updatePost);
 router.delete("/:id", postCtrl.deletePost);

@@ -5,7 +5,6 @@ import FollowHandler from "../Profil/FollowHandler";
 import { dateParser, isEmpty } from "../Utils";
 import CommentCard from "./CommentCard";
 import DeleteCard from "./DeleteCard";
-// import LikeButton from "./LikeButton";
 
 const Card = ({ post }) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +13,6 @@ const Card = ({ post }) => {
 	const [showComments, setShowComments] = useState(false);
 	const usersData = useSelector(state => state.usersReducer);
 	const userData = useSelector(state => state.userReducer);
-	const comments = useSelector(state => state.commentReducer);
 	const dispatch = useDispatch();
 
 	//UPDATE-ITEM

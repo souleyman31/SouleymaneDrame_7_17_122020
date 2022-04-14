@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { addPost, getPosts } from "../../actions/post.actions";
+import { addPost, addPostPicture, getPosts } from "../../actions/post.actions";
 import { isEmpty, timestampParser } from "../Utils";
 
 const NewPostForm = () => {
@@ -17,12 +17,27 @@ const NewPostForm = () => {
 	const handlePost = async () => {
 		if (message || postPicture || video) {
 			const data = new FormData();
-			data.append("userId", userData.id); // C'est le req.body du backend
+			data.append("userId", userData.id);
 			data.append("message", message);
 			if (file) data.append("picture", file);
 			data.append("video", video);
 
 			await dispatch(addPost(data));
+			dispatch(getPosts());
+			cancelPost();
+		} else {
+			alert("Veuillez entrer un message");
+		}
+	};
+	const handlePostPicture = async () => {
+		if (message || postPicture || video) {
+			const data = new FormData();
+			data.append("userId", userData.id);
+			data.append("message", message);
+			if (file) data.append("picture", file);
+			data.append("video", video);
+
+			await dispatch(addPostPicture(data));
 			dispatch(getPosts());
 			cancelPost();
 		} else {
@@ -93,13 +108,12 @@ const NewPostForm = () => {
 						</NavLink>
 						{/* PARTIE DE FORM*/}
 						<div className="post-form">
-							<label htmlFor="">
-								{" "}
+							<label>
 								Journal
 								<textarea
 									name="message"
 									id="message"
-									placeholder="Quelque chose à publier ?"
+									placeholder="Quoi de neuf à publier ?"
 									onChange={e => setMessage(e.target.value)}
 									value={message}
 								/>
@@ -178,7 +192,13 @@ const NewPostForm = () => {
 											Annuler le message
 										</button>
 									) : null}
-									<button className="send" onClick={handlePost}>
+									<button
+										className="send"
+										onClick={() => {
+											handlePost();
+											handlePostPicture();
+										}}
+									>
 										Envoyer
 									</button>
 								</div>
