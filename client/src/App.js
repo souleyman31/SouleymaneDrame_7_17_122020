@@ -1,5 +1,4 @@
 //
-//Le getUser dans APP et le getUsers dans index qui est plus haut
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { UidContext } from "./components/AppContext";
@@ -16,7 +15,7 @@ function App() {
 		const fetchToken = async () => {
 			await axios({
 				method: "GET",
-				url: `${process.env.REACT_APP_API_URL}/jwtid`,
+				url: `${process.env.REACT_APP_API_URL}/api/users/jwtid`,
 				withCredentials: true
 			})
 				.then(res => {

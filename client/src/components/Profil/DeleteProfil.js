@@ -1,11 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteUser } from "../../actions/user.actions";
 
-const DeleteProfil = () => {
-	const userData = useSelector(state => state.userReducer);
+const DeleteProfil = props => {
 	const dispatch = useDispatch();
-	const onDelete = () => dispatch(deleteUser(userData.id));
+	const onDelete = () => dispatch(deleteUser(props.id));
 
 	return (
 		<div

@@ -14,7 +14,7 @@ const Navbar = () => {
 				<div className="nav-container">
 					{/* LEFT-NAVBAR */}
 					<div className="logo">
-						<NavLink exact to="/">
+						<NavLink to="/">
 							<div className="logo">
 								<img src="./img/icone.png" alt="icon" />
 								<h3>Groupomania</h3>

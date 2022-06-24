@@ -11,9 +11,11 @@ const logger = require("./middleware/logger");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const errorHandler = require("./middleware/error");
 
 const dotenv = require("dotenv");
-const { checkUser, requireAuth } = require("./middleware/auth");
+const { checkUser, authUser } = require("./middleware/authMdlware");
+
 dotenv.config({ path: "./config/config.env" });
 
 const app = express();
@@ -28,7 +30,7 @@ const corsOptions = {
 	preflightContinue: false
 };
 app.use(cors(corsOptions));
-const db = require("./models");
+// const db = require("./models");
 
 //MORGAN
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
@@ -42,18 +44,20 @@ app.use(cookieParser());
 
 // CHECK BEFORE THE ROUTES
 app.get("*", checkUser);
-app.get("/jwtid", requireAuth, (req, res) => {
+app.get("/api/users/jwtid", authUser, (req, res) => {
 	res.status(200).send(`${res.locals.user.id}`);
-	console.log(`${res.locals.user.id}`);
+	// console.log(`${res.locals.user.id}`);
 });
 
 //STATIC FOLDER
 app.use("/client/public/uploads", express.static(path.join(__dirname, "client/public/uploads")));
 
 //ROUTES
-app.use("/api/users", require("./routes/user"));
-app.use("/api/posts", require("./routes/post"));
-app.use("/api/comments", require("./routes/comment"));
+app.use("/api/users", require("./routes/userRoute"));
+app.use("/api/posts", require("./routes/postRoute"));
+
+//ERROR
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>

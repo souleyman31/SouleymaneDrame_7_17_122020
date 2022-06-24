@@ -1,5 +1,4 @@
-// CF followHandler/Profil/comp
-//CF  Thread/comp
+// DATE PARSER
 export const dateParser = num => {
 	let options = {
 		hour: "2-digit",
@@ -35,6 +34,7 @@ export const timestampParser = num => {
 	return date.toString();
 };
 
+//IS EMPTY
 export const isEmpty = value => {
 	return (
 		value === undefined ||

@@ -1,4 +1,4 @@
-//oN CHANGE le index de la fonction par LOG sinon error
+//
 import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";

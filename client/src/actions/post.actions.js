@@ -4,8 +4,8 @@ import axios from "axios";
 export const GET_POSTS = "GET_POSTS";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
-export const LIKE_POST = "LIKE_POSTS";
-export const UNLIKE_POST = "UNLIKE_POSTS";
+// export const LIKE_POST = "LIKE_POSTS";
+// export const UNLIKE_POST = "UNLIKE_POSTS";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
@@ -54,46 +54,46 @@ export const deletePost = userId => {
 	};
 };
 
-//LIKE POST
-export const likePost = (postId, userId) => {
-	return dispatch => {
-		return axios({
-			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/posts/like/` + postId,
-			data: { id: userId }
-		})
-			.then(res => {
-				dispatch({ type: LIKE_POST, payload: { postId, userId } });
-			})
-			.catch(err => console.log(err));
-	};
-};
+// //LIKE POST
+// export const likePost = (postId, userId) => {
+// 	return dispatch => {
+// 		return axios({
+// 			method: "patch",
+// 			url: `${process.env.REACT_APP_API_URL}/api/posts/like/` + postId,
+// 			data: { id: userId }
+// 		})
+// 			.then(res => {
+// 				dispatch({ type: LIKE_POST, payload: { postId, userId } });
+// 			})
+// 			.catch(err => console.log(err));
+// 	};
+// };
 
-//UNLIKE POST
-export const unlikePost = (postId, userId) => {
-	return dispatch => {
-		return axios({
-			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/posts/unlike/` + postId,
-			data: { id: userId }
-		})
-			.then(res => {
-				dispatch({ type: UNLIKE_POST, payload: { postId, userId } });
-			})
-			.catch(err => console.log(err));
-	};
-};
+// //UNLIKE POST
+// export const unlikePost = (postId, userId) => {
+// 	return dispatch => {
+// 		return axios({
+// 			method: "patch",
+// 			url: `${process.env.REACT_APP_API_URL}/api/posts/unlike/` + postId,
+// 			data: { id: userId }
+// 		})
+// 			.then(res => {
+// 				dispatch({ type: UNLIKE_POST, payload: { postId, userId } });
+// 			})
+// 			.catch(err => console.log(err));
+// 	};
+// };
 
-//ADD COMMENT (on met dans le payload juste postId pcq on aura besoin de l'id pour rajouter les comments)
-export const addComment = (postId, userId, posterId, comments) => {
+//ADD COMMENT
+export const addComment = (id, userId, postId, comments) => {
 	return dispatch => {
 		return axios({
-			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/posts/post-comment/${postId}`,
-			data: { posterId, userId, comments }
+			method: "PATCH",
+			url: `${process.env.REACT_APP_API_URL}/api/posts/comment-post/${id}`,
+			data: { postId, userId, comments }
 		})
 			.then(res => {
-				dispatch({ type: ADD_COMMENT, payload: { postId } });
+				dispatch({ type: ADD_COMMENT, payload: { id } });
 			})
 			.catch(err => console.log(err));
 	};
@@ -104,7 +104,7 @@ export const editComment = (postId, comments) => {
 	return dispatch => {
 		return axios({
 			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/posts/put-comment/${postId}`,
+			url: `${process.env.REACT_APP_API_URL}/api/posts/comment-update/${postId}`,
 			data: { comments }
 		})
 			.then(res => {
@@ -119,7 +119,7 @@ export const deleteComment = (postId, userId) => {
 	return dispatch => {
 		return axios({
 			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/posts/delete-comment/${postId}`,
+			url: `${process.env.REACT_APP_API_URL}/api/posts/comment-delete/${postId}`,
 			data: { userId }
 		})
 			.then(res => {
@@ -129,7 +129,7 @@ export const deleteComment = (postId, userId) => {
 	};
 };
 
-//ADD MESSAGE POST
+//ADD  POST
 export const addPost = data => {
 	return dispatch => {
 		return axios.post(`${process.env.REACT_APP_API_URL}/api/posts/`, data).then(res => {
@@ -141,15 +141,15 @@ export const addPost = data => {
 		});
 	};
 };
-//ADD IMAGE POST
-export const addPostPicture = data => {
-	return dispatch => {
-		return axios.post(`${process.env.REACT_APP_API_URL}/api/posts/upload`, data).then(res => {
-			if (res.data.error) {
-				dispatch({ type: GET_POST_ERRORS, payload: res.data.error });
-			} else {
-				dispatch({ type: GET_POST_ERRORS, payload: "" });
-			}
-		});
-	};
-};
+// //ADD IMAGE POST
+// export const addPostPicture = data => {
+// 	return dispatch => {
+// 		return axios.post(`${process.env.REACT_APP_API_URL}/api/posts/upload`, data).then(res => {
+// 			if (res.data.error) {
+// 				dispatch({ type: GET_POST_ERRORS, payload: res.data.error });
+// 			} else {
+// 				dispatch({ type: GET_POST_ERRORS, payload: "" });
+// 			}
+// 		});
+// 	};
+// };

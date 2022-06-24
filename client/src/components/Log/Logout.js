@@ -1,17 +1,17 @@
-//NPM I -S JS-COOKIE
+//
 import React from "react";
 import axios from "axios";
 import cookie from "js-cookie";
 
 const Logout = () => {
 	const removeCookie = key => {
-		if (window !== "undefinded") {
+		if (window !== "undefined") {
 			cookie.remove(key, { expires: 1 });
 		}
 	};
 	const handleLogout = async () => {
 		await axios({
-			method: "GET",
+			method: "POST",
 			url: `${process.env.REACT_APP_API_URL}/api/users/logout`,
 			withCredentials: true
 		})

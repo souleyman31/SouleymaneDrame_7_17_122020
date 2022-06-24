@@ -11,13 +11,13 @@ const UploadProfil = () => {
 
 	const onChange = e => {
 		setFile(e.target.files[0]);
-		console.log(e.target.files);
+		// console.log(e.target.files);
 	};
 
 	const handlePicture = e => {
 		e.preventDefault();
 		const data = new FormData();
-		//On les retrouve dans le userReducer
+
 		data.append("name", userData.pseudo);
 		data.append("userId", userData.id);
 		data.append("picture", file);
@@ -29,7 +29,7 @@ const UploadProfil = () => {
 	//
 	return (
 		<div>
-			<form action="POST" onSubmit={handlePicture} enctype="multipart/form-data">
+			<form action="POST" onSubmit={handlePicture}>
 				<div className="upload-pic">
 					<label htmlFor="file"> Changer d'image</label>
 					<input

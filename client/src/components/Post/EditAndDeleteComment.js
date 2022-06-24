@@ -14,7 +14,6 @@ const EditAndDeleteComment = ({ comment, postId }) => {
 	const handleEdit = e => {
 		e.preventDefault();
 		if (text) {
-			// j'enleve le comment.id
 			dispatch(editComment(comment.id, text));
 			setText("");
 			setEdit(false);
@@ -36,15 +35,16 @@ const EditAndDeleteComment = ({ comment, postId }) => {
 	}, [uid, comment.UserId]);
 
 	return (
+		// EDIT COMMENT
 		<div className="edit-comment">
-			{/* PREMIERE CONDITION */}
+			{/* FIRST */}
 			{isAuthor && edit === false && (
 				<span onClick={() => setEdit(!edit)}>
 					<img src="./img/icons/edit.svg" alt="edit-comment" />
 				</span>
 			)}
-			{/* FIN  PREMIERE CONDITION */}
-			{/* DEUXIEME CONDITION */}
+
+			{/* SECOND */}
 			{isAuthor && edit && (
 				<form action="" onSubmit={handleEdit} className="edit-comment-form">
 					<label htmlFor="text" onClick={() => setEdit(!edit)}>
@@ -59,7 +59,7 @@ const EditAndDeleteComment = ({ comment, postId }) => {
 					/>
 					<br />
 
-					{/* LA SUPPRESSION */}
+					{/* DELETE COMMENT && VALIDATATE MODIF COMMENT */}
 					<div className="btn">
 						<span
 							onClick={() => {
@@ -74,8 +74,6 @@ const EditAndDeleteComment = ({ comment, postId }) => {
 					</div>
 				</form>
 			)}
-
-			{/* FIN DEUXIEME CONDITION */}
 		</div>
 	);
 };

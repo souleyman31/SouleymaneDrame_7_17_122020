@@ -1,5 +1,3 @@
-////Le getUser dans APP et le getUsers dans index qui est plus haut
-
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.scss";
@@ -13,7 +11,6 @@ import routeReducer from "./reducers";
 import thunk from "redux-thunk";
 import { getUsers } from "./actions/users.actions";
 import { getPosts } from "./actions/post.actions";
-import { getComments } from "./actions/comment.actions";
 
 //
 
@@ -22,7 +19,6 @@ const store = createStore(routeReducer, composeWithDevTools(applyMiddleware(thun
 //
 store.dispatch(getUsers());
 store.dispatch(getPosts());
-store.dispatch(getComments());
 
 ReactDOM.render(
 	<React.StrictMode>

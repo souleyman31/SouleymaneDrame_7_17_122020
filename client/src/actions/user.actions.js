@@ -27,8 +27,8 @@ export const getUser = uid => {
 export const updateBio = (userId, bio) => {
 	return dispatch => {
 		return axios({
-			method: "put",
-			url: `${process.env.REACT_APP_API_URL}/api/users/` + userId,
+			method: "PUT",
+			url: `${process.env.REACT_APP_API_URL}/api/users/${userId}`,
 			data: { bio }
 		})
 			.then(res => {
@@ -58,35 +58,35 @@ export const uploadPicture = (data, id) => {
 	};
 };
 
-//FOLLOW USER
-export const followUser = (followerId, idToFollow) => {
-	return dispatch => {
-		return axios({
-			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/users/follow/` + followerId,
-			data: { idToFollow }
-		})
-			.then(res => {
-				dispatch({ type: FOLLOW_USER, payload: { idToFollow } });
-			})
-			.catch(err => console.log(err));
-	};
-};
+// //FOLLOW USER
+// export const followUser = (followerId, idToFollow) => {
+// 	return dispatch => {
+// 		return axios({
+// 			method: "patch",
+// 			url: `${process.env.REACT_APP_API_URL}/api/users/follow/` + followerId,
+// 			data: { idToFollow }
+// 		})
+// 			.then(res => {
+// 				dispatch({ type: FOLLOW_USER, payload: { idToFollow } });
+// 			})
+// 			.catch(err => console.log(err));
+// 	};
+// };
 
-//UNFOLLOW USER
-export const unfollowUser = (followerId, idToUnFollow) => {
-	return dispatch => {
-		return axios({
-			method: "patch",
-			url: `${process.env.REACT_APP_API_URL}/api/users/unfollow/` + followerId,
-			data: { idToUnFollow }
-		})
-			.then(res => {
-				dispatch({ type: UNFOLLOW_USER, payload: { idToUnFollow } });
-			})
-			.catch(err => console.log(err));
-	};
-};
+// //UNFOLLOW USER
+// export const unfollowUser = (followerId, idToUnFollow) => {
+// 	return dispatch => {
+// 		return axios({
+// 			method: "patch",
+// 			url: `${process.env.REACT_APP_API_URL}/api/users/unfollow/` + followerId,
+// 			data: { idToUnFollow }
+// 		})
+// 			.then(res => {
+// 				dispatch({ type: UNFOLLOW_USER, payload: { idToUnFollow } });
+// 			})
+// 			.catch(err => console.log(err));
+// 	};
+// };
 
 //DELETE USER
 export const deleteUser = userId => {

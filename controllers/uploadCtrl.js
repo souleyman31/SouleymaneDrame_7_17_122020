@@ -2,19 +2,21 @@
 
 const multer = require("multer");
 const models = require("../models");
-const asyncFun = require("async");
+const asyncUpload = require("async");
 const path = require("path");
+const ErrorResponse = require("../middleware/errorResponse");
 
-//
+// STORAGE
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "client/public/uploads"); // => Dossier Images
+		cb(null, "client/public/uploads");
 	},
 	filename: (req, file, cb) => {
-		cb(null, Date.now() + path.extname(file.originalname)); // => 1/1/2021.png
+		cb(null, Date.now() + path.extname(file.originalname));
 	}
 });
 
+//UPLOAD IMAGE
 exports.uploadImage = multer({
 	storage: storage,
 	limits: { fileSize: "1000000" },
@@ -25,14 +27,16 @@ exports.uploadImage = multer({
 
 		if (mimeType && extname) {
 			return cb(null, true);
+		} else {
+			return cb(new ErrorResponse("Invalid mimeType"));
 		}
-		cb("Veuillez télécharger le bon format");
 	}
-}).single("picture"); // cest le picture du model et du frontend
+}).single("picture");
 
-exports.uploadProfil = (req, res, next) => {
+//UPLOAD PROFIL
+exports.uploadProfil = async (req, res, next) => {
 	try {
-		asyncFun.waterfall(
+		await asyncUpload.waterfall(
 			[
 				function (done) {
 					models.User.findOne({
@@ -52,22 +56,17 @@ exports.uploadProfil = (req, res, next) => {
 					if (userFound) {
 						userFound
 							.update({
-								// bio: req.body.bio ? req.body.bio : userFound.bio
-								picture: `${req.protocol}://${req.get(
-									"host"
-								)}/client/public/uploads/${req.file.filename}`
+								picture: req.file
 									? `${req.protocol}://${req.get("host")}/client/public/uploads/${
 											req.file.filename
 									  }`
-									: userFound.picture
+									: ""
 							})
 							.then(function () {
 								done(userFound);
 							})
 							.catch(function (err) {
-								return res
-									.status(500)
-									.json({ error: "L'utilsateur ne peut pas être modifié" });
+								next(err);
 							});
 					} else {
 						return res.status(404).json({

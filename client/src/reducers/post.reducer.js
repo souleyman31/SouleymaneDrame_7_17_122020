@@ -5,8 +5,6 @@ import {
 	DELETE_POST,
 	EDIT_COMMENT,
 	GET_POSTS,
-	LIKE_POST,
-	UNLIKE_POST,
 	UPDATE_POST
 } from "../actions/post.actions";
 
@@ -31,28 +29,28 @@ const postReducer = (state = initialState, action) => {
 		case DELETE_POST:
 			return state.filter(post => post.id !== action.payload.userId);
 
-		case LIKE_POST:
-			return state.map(post => {
-				if (post._id === action.payload.postId) {
-					return {
-						...post,
-						likers: [action.payload.userId, ...post.likers]
-					};
-				}
+		// case LIKE_POST:
+		// 	return state.map(post => {
+		// 		if (post._id === action.payload.postId) {
+		// 			return {
+		// 				...post,
+		// 				likers: [action.payload.userId, ...post.likers]
+		// 			};
+		// 		}
 
-				return post;
-			});
-		case UNLIKE_POST:
-			return state.map(post => {
-				if (post._id === action.payload.postId) {
-					return {
-						...post,
-						likers: post.likers.filter(id => id !== action.payload.userId)
-					};
-				}
+		// 		return post;
+		// 	});
+		// case UNLIKE_POST:
+		// 	return state.map(post => {
+		// 		if (post._id === action.payload.postId) {
+		// 			return {
+		// 				...post,
+		// 				likers: post.likers.filter(id => id !== action.payload.userId)
+		// 			};
+		// 		}
 
-				return post;
-			});
+		// 		return post;
+		// 	});
 
 		case EDIT_COMMENT:
 			return state.map(post => {

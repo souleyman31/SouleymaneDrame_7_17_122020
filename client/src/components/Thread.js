@@ -28,7 +28,7 @@ const Thread = () => {
 			setLoadPost(false);
 			setCount(count + 5);
 		}
-		//ON RAJOUTE LE ADDEVENLISTENER
+		//ADD-EVEN-LISTENER
 		window.addEventListener("scroll", loadMore);
 		return () => window.removeEventListener("scroll", loadMore);
 	}, [loadPost, dispatch, count]);

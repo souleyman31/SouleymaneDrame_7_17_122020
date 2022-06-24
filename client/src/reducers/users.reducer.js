@@ -1,5 +1,3 @@
-//On va importer l'index de USERS REDUCER DANS INDEX/SRC POUR FAIRE LE STORE.DISPATCH
-
 import { GET_USERS } from "../actions/users.actions";
 
 //

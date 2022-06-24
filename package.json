@@ -1,5 +1,5 @@
 {
-	"name": "test6",
+	"name": "projet7",
 	"version": "1.0.0",
 	"description": "",
 	"main": "server.js",
@@ -7,7 +7,7 @@
 		"start": "cross-env NODE_ENV=production node server.js",
 		"dev": "cross-env NODE_ENV=development nodemon server.js"
 	},
-	"author": "",
+	"author": "Souleymane DRAME",
 	"license": "ISC",
 	"dependencies": {
 		"async": "^3.2.3",

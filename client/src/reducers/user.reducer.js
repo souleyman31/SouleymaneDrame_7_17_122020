@@ -1,14 +1,4 @@
-// APRES MULTER
-//
-
-import {
-	GET_USER,
-	UPLOAD_PICTURE,
-	UPDATE_BIO,
-	FOLLOW_USER,
-	UNFOLLOW_USER,
-	DELETE_USER
-} from "../actions/user.actions";
+import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO, DELETE_USER } from "../actions/user.actions";
 
 const initialState = {};
 
@@ -27,18 +17,10 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				picture: action.payload
 			};
-		case FOLLOW_USER:
-			return {
-				...state,
-				following: [action.payload.idToFollow, ...state.following]
-			};
-		case UNFOLLOW_USER:
-			return {
-				...state,
-				following: state.following.filter(id => id !== action.payload.idToUnFollow)
-			};
+
 		case DELETE_USER:
-			return state.filter(post => post.id !== action.payload.userId);
+			// return state.filter(post => post.id !== action.payload.userId);
+			return { post: state.post.filter(post => post.id !== action.payload.userId) };
 
 		default:
 			return state;
