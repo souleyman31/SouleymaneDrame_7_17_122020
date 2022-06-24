@@ -37,7 +37,7 @@ Tout le **Frontend** se trouve dans le dossier Client.
 
 ### Pour tester les fonctionnalités de l'application :
 
-#### Backend
+#### Backend Configuration
 
 ---
 
@@ -50,8 +50,12 @@ Tout le **Frontend** se trouve dans le dossier Client.
 -   Puis importer le fichier "Database.sql" qui se trouve dans le dossier Database du **Backend**
 
 
-#### Frontend
+#### Frontend Configuration
 
 ---
 
-cd client => pour acceder au Frontend
+- cd client => pour acceder au Frontend
+- Se créer un fichier .env dans le dossier CLIENT et y mettre :
+REACT_APP_API_URL = http://localhost:5000
+
+
