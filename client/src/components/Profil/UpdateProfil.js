@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
-import { dateParser } from "../Utils";
+import { dateParser, isEmpty } from "../Utils";
 import DeleteProfil from "./DeleteProfil";
 import UploadProfil from "./UploadProfil";
 
 const UpdateProfil = () => {
 	const userData = useSelector(state => state.userReducer);
+	const error = useSelector(state => state.errorReducer.userError);
 	const [bio, setBio] = useState("");
 	const [updateForm, setUpdateForm] = useState(false);
+
 	const dispatch = useDispatch();
 
 	//
@@ -29,6 +31,7 @@ const UpdateProfil = () => {
 						<h3>Photo de profil</h3>
 						<img src={userData.picture} alt="pic" />
 						<UploadProfil />
+						{!isEmpty(error) && <p>{error}</p>}
 					</div>
 					<div className="right-part">
 						<div className="bio-update">

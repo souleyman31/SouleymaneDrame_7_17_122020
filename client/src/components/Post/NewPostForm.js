@@ -158,8 +158,8 @@ const NewPostForm = () => {
 								</div>
 
 								{/*  ERRORS */}
-								{!isEmpty(error.format) && <p>{error.format}</p>}
-								{!isEmpty(error.maxSize) && <p>{error.maxSize}</p>}
+								{!isEmpty(error) && <p>{error}</p>}
+								{/* {console.log(error)} */}
 
 								{/* SECOND  FOOTER */}
 								<div className="btn-send">

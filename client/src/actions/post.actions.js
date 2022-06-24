@@ -134,6 +134,7 @@ export const addPost = data => {
 	return dispatch => {
 		return axios.post(`${process.env.REACT_APP_API_URL}/api/posts/`, data).then(res => {
 			if (res.data.error) {
+				// console.log(res.data);
 				dispatch({ type: GET_POST_ERRORS, payload: res.data.error });
 			} else {
 				dispatch({ type: GET_POST_ERRORS, payload: "" });
@@ -141,15 +142,3 @@ export const addPost = data => {
 		});
 	};
 };
-// //ADD IMAGE POST
-// export const addPostPicture = data => {
-// 	return dispatch => {
-// 		return axios.post(`${process.env.REACT_APP_API_URL}/api/posts/upload`, data).then(res => {
-// 			if (res.data.error) {
-// 				dispatch({ type: GET_POST_ERRORS, payload: res.data.error });
-// 			} else {
-// 				dispatch({ type: GET_POST_ERRORS, payload: "" });
-// 			}
-// 		});
-// 	};
-// };

@@ -32,7 +32,7 @@ const errorHandler = (err, req, res, next) => {
 
 	if (err.message.includes("Invalid mimeType")) {
 		const message = "Veuillez insérer une image au bon format ";
-		error = new ErrorResponse(message, 400);
+		error = new ErrorResponse(message, 200);
 	}
 
 	res.status(error.statusCode || 500).json({
