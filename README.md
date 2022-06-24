@@ -29,7 +29,7 @@ Tout le **Frontend** se trouve dans le dossier Client.
 #### Frontend
 
 ---
-
+-   cd client
 -   npm install,
 -   npm start
 
