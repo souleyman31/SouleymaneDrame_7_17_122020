@@ -44,7 +44,7 @@ Tout le **Frontend** se trouve dans le dossier Client.
 ##### La Base de Donnée
 
 -   Se connecter au serveur MySQL de votre choix.
--   Exécuter la commande: CREATE DATABASE database_development_projet7;
+-   Exécuter la commande: CREATE DATABASE database_development_projet77;
 -   Mettez vos identifiant et mot de passe dans le fichier config/config.json du **Backend**
 
 -   Puis importer le fichier "Database.sql" qui se trouve dans le dossier Database du **Backend**
