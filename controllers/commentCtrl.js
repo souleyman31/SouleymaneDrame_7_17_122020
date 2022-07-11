@@ -36,8 +36,6 @@ exports.createComment = async (req, res, next) => {
 								return res
 									.status(500)
 									.json({ error: "Impossible de vérfier l'utilisateur" });
-
-								console.log(err);
 							});
 					} else {
 						return res.status(404).json({ error: "Le commentaire n'existe pas" });
