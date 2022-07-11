@@ -1,5 +1,5 @@
 //
-// A RAJOUTER /UPLOAD P30
+
 const models = require("../models");
 const asyncPost = require("async");
 const LIMIT_POST = 30;
