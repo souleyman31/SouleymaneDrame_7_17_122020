@@ -163,7 +163,10 @@ exports.deletePost = async (req, res, next) => {
 		const post = await models.Post.destroy({
 			where: { id: req.params.id }
 		});
-		if (!post) return res.status(400).json({ msg: "Pas d'utilisateur trouvé" });
+		if (!post)
+			return res
+				.status(400)
+				.json({ msg: `Pas de commentaire trouvé avec l'id ${req.params.id} ` });
 		res.status(200).json({ msg: "Utilisateur supprimé" });
 	} catch (error) {
 		res.status(400).json(error);

@@ -2,21 +2,21 @@
 	"development": {
 		"username": "<USERNAME>",
 		"password": "<PASSWORD>",
-		"database": "database_development_projet7",
+		"database": "database_development_projet77",
 		"host": "127.0.0.1",
 		"dialect": "mysql"
 	},
 	"test": {
 		"username": "<USERNAME>",
 		"password": "<PASSWORD>",
-		"database": "database_test_projet7",
+		"database": "database_test_projet77",
 		"host": "127.0.0.1",
 		"dialect": "mysql"
 	},
 	"production": {
 		"username": "<USERNAME>",
 		"password": "<PASSWORD>",
-		"database": "database_production_projet7",
+		"database": "database_production_projet77",
 		"host": "127.0.0.1",
 		"dialect": "mysql"
 	}

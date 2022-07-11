@@ -1,8 +1,8 @@
 //
 
-const mysql2 = require("mysql2");
 const express = require("express");
 const colors = require("colors");
+const mysql2 = require("mysql2");
 const morgan = require("morgan");
 
 const path = require("path");
@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const errorHandler = require("./middleware/error");
-
+const db = require("./models");
 const dotenv = require("dotenv");
 const { checkUser, authUser } = require("./middleware/authMdlware");
 
@@ -20,7 +20,7 @@ dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
-// //ERREUR CORS
+// //ERRORS CORS
 const corsOptions = {
 	origin: process.env.CLIENT_URL,
 	credentials: true,
@@ -30,7 +30,6 @@ const corsOptions = {
 	preflightContinue: false
 };
 app.use(cors(corsOptions));
-// const db = require("./models");
 
 //MORGAN
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
@@ -46,7 +45,6 @@ app.use(cookieParser());
 app.get("*", checkUser);
 app.get("/api/users/jwtid", authUser, (req, res) => {
 	res.status(200).send(`${res.locals.user.id}`);
-	// console.log(`${res.locals.user.id}`);
 });
 
 //STATIC FOLDER
@@ -60,6 +58,11 @@ app.use("/api/posts", require("./routes/postRoute"));
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-	console.log(`App listening on mode ${process.env.NODE_ENV} in the port ${PORT}`.white.inverse)
-);
+
+db.sequelize.sync().then(() => {
+	app.listen(PORT, () =>
+		console.log(
+			`App listening on mode ${process.env.NODE_ENV} in the port ${PORT}`.white.inverse
+		)
+	);
+});

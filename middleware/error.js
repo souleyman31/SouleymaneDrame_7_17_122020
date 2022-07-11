@@ -16,7 +16,7 @@ const errorHandler = (err, req, res, next) => {
 	///
 
 	if (err.message.includes("Invalid parameters")) {
-		const message = "Veuillez renseigner un email et un mot de passe corrects !!!";
+		const message = "Le mail ou le mot de passe ne correspondent pas!!!";
 		error = new ErrorResponse(message, 200);
 	}
 
