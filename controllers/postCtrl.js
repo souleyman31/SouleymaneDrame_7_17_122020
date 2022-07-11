@@ -79,12 +79,10 @@ exports.getPosts = async (req, res, next) => {
 			include: [
 				{
 					model: models.User,
-					//   as: 'User',
 					attributes: ["pseudo"]
 				},
 				{
 					model: models.Comment
-					//   as: 'Comment'
 				}
 			]
 		})
