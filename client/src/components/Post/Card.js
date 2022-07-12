@@ -121,7 +121,7 @@ const Card = ({ post }) => {
 
 									<span>{post.Comments.length}</span>
 								</div>
-								<h6>LIKES</h6>
+
 								<img src="./img/icons/share.svg" alt="share" />
 							</div>
 
